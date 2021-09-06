@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  max_size: 1
+  deadline: 2021-09-06 12:47:55
+  voting_deadline: 2021-09-06 12:47:55
+  start: 2021-09-06 12:47:55
+  rules: MyString
+
+two:
+  title: MyString
+  max_size: 1
+  deadline: 2021-09-06 12:47:55
+  voting_deadline: 2021-09-06 12:47:55
+  start: 2021-09-06 12:47:55
+  rules: MyString
