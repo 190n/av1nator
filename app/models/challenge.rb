@@ -8,8 +8,7 @@ class Challenge < ApplicationRecord
     validates :deadline, presence: true
     validates :voting_deadline, presence: true
     validates :user, presence: true
-    validates :deadline_after_start
-    validates :voting_deadline_after_deadline
+    validate :deadline_after_start, :voting_deadline_after_deadline
 
     def deadline_after_start
         if start >= deadline
@@ -20,6 +19,8 @@ class Challenge < ApplicationRecord
     def voting_deadline_after_deadline
         if deadline >= voting_deadline
             errors.add(:voting_deadline, "must be after the submission deadline")
+        end
+    end
 
     def active?
         start < DateTime.now and DateTime.now < voting_deadline
