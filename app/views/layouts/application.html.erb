@@ -23,6 +23,9 @@
                 </a>
             </div>
             <div class="navbar-menu">
+                <div class="navbar-start">
+                    <%= link_to 'Challenges', challenges_path, class: 'navbar-item' %>
+                </div>
                 <div class="navbar-end">
                     <% if user_signed_in? %>
                         <%= link_to user_path(current_user), class: 'navbar-item' do %>

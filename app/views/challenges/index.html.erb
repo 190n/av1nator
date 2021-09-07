@@ -1,0 +1,16 @@
+<h1 class="title is-1">Challenges</h1>
+<% if @challenges.empty? %>
+    <p>
+        There are no challenges yet.
+    </p>
+<% else %>
+    <div class="content">
+        <ul>
+            <% @challenges.each do |c| %>
+                <li>
+                    <%= link_to c.title, c %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
