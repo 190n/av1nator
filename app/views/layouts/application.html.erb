@@ -1,16 +1,50 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Tallynator</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html class="has-navbar-fixed-top">
+    <head>
+        <title>Tallynator</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
 
-  <body>
-    <%= yield %>
-  </body>
+    <body>
+        <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <%= link_to 'Tallynator', root_path, class: 'navbar-item' %>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-end">
+                    <% if user_signed_in? %>
+                        <%= link_to user_path(current_user), class: 'navbar-item' do %>
+                            <figure class="image">
+                                <img src="<%= current_user.image %>?size=64" class="is-rounded">
+                            </figure>
+                            &nbsp;
+                            <%= current_user.name %>
+                        <% end %>
+                    <% end %>
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <% if user_signed_in? %>
+                                <%= link_to "Log out", destroy_user_session_path, class: 'button is-danger' %>
+                            <% else %>
+                                <%= link_to 'Log in with Discord', user_discord_omniauth_authorize_path, method: :post, class: 'button is-primary' %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <main class="column is-8 is-offset-2 is-desktop">
+            <%= yield %>
+        </main>
+    </body>
 </html>
