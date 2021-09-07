@@ -32,6 +32,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'omniauth'
 gem 'omniauth-discord'
+gem 'omniauth-rails_csrf_protection'
 
 gem 'devise'
 
