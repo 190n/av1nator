@@ -1,1 +1,41 @@
 <h1 class="title is-1">New challenge</h1>
+
+<%= form_with model: @challenge do |f| %>
+    <div class="field">
+        <%= f.label :title, class: 'label is-required' %>
+        <div class="control">
+            <%= f.text_field :title, class: 'input', required: true %>
+        </div>
+    </div>
+    <div class="field">
+        <%= f.label :max_size, 'Maximum size (bytes)', class: 'label is-required' %>
+        <div class="control">
+            <%= f.number_field :max_size, class: 'input', required: true %>
+        </div>
+    </div>
+    <div class="field">
+        <%= f.label :rules, class: 'label' %>
+        <div class="control">
+            <%= f.text_area :rules, class: 'textarea' %>
+        </div>
+    </div>
+    <div class="field">
+        <%= f.label :start, 'Submission open date', class: 'label is-required' %>
+        <div class="control">
+            <%= f.datetime_local_field :start, class: 'input', required: true %>
+        </div>
+    </div>
+    <div class="field">
+        <%= f.label :deadline, 'Submission deadline', class: 'label is-required' %>
+        <div class="control">
+            <%= f.datetime_local_field :deadline, class: 'input', required: true %>
+        </div>
+    </div>
+    <div class="field">
+        <%= f.label :voting_deadline, 'Voting deadline', class: 'label is-required' %>
+        <div class="control">
+            <%= f.datetime_local_field :voting_deadline, class: 'input', required: true %>
+        </div>
+    </div>
+    <%= f.submit class: 'button is-primary' %>
+<% end %>

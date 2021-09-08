@@ -1,1 +1,6 @@
 @import '../../../node_modules/bulma/bulma.sass';
+
+.label.is-required:after {
+    content: '*';
+    color: $danger;
+}
