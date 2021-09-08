@@ -1,44 +1,17 @@
 <h1 class="title is-1">New challenge</h1>
 
 <%= form_with model: @challenge do |f| %>
-    <div class="field">
-        <%= f.label :title, class: 'label is-required' %>
-        <div class="control">
-            <%= f.text_field :title, class: 'input', required: true %>
-        </div>
-    </div>
-    <div class="field">
-        <%= f.label :max_size, 'Maximum size (bytes)', class: 'label is-required' %>
-        <div class="control">
-            <%= f.number_field :max_size, class: 'input', required: true %>
-        </div>
-    </div>
-    <div class="field">
-        <%= f.label :rules, class: 'label' %>
-        <div class="control">
-            <%= f.text_area :rules, class: 'textarea' %>
-        </div>
-    </div>
-    <div class="field">
-        <%= f.label :start, 'Submission open date', class: 'label is-required' %>
-        <div class="control">
-            <%= f.datetime_local_field :start, class: 'input', required: true %>
-        </div>
-    </div>
-    <div class="field">
-        <%= f.label :deadline, 'Submission deadline', class: 'label is-required' %>
-        <div class="control">
-            <%= f.datetime_local_field :deadline, class: 'input', required: true %>
-        </div>
-    </div>
-    <div class="field">
-        <%= f.label :voting_deadline, 'Voting deadline', class: 'label is-required' %>
-        <div class="control">
-            <%= f.datetime_local_field :voting_deadline, class: 'input', required: true %>
-        </div>
-    </div>
-    <p class="mb-2">
-        <b class="has-text-danger">*</b> required
-    </p>
+    <%= render partial: 'shared/fields', locals: {
+        form: f,
+        fields: [
+            { field: :title, required: true },
+            { field: :max_size, label: 'Maximum size (bytes)', required: true, field_type: :number_field },
+            { field: :rules, field_type: :text_area },
+            { field: :start, label: 'Submission open date', required: true, field_type: :datetime_local_field },
+            { field: :deadline, label: 'Submission deadline', required: true, field_type: :datetime_local_field },
+            { field: :voting_deadline, label: 'Voting deadline', required: true, field_type: :datetime_local_field },
+        ],
+    } %>
+    <%= render partial: 'shared/required_legend' %>
     <%= f.submit class: 'button is-primary' %>
 <% end %>

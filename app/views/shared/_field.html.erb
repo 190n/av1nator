@@ -1,3 +1,14 @@
+<% field_type = data.include?(:field_type) ? data[:field_type] : :text_field %>
 <div class="field">
-    <%= form.label %>
+    <% if data.include? :label %>
+        <%= form.label data[:field], data[:label], class: data[:required] ? 'label is-required' : 'label' %>
+    <% else %>
+        <%= form.label data[:field], class: data[:required] ? 'label is-required' : 'label' %>
+    <% end %>
+    <div class="field">
+        <%= form.send(
+                field_type,
+                data[:field],
+                class: field_type == :text_area ? 'textarea' : 'input', required: data[:required]) %>
+    </div>
 </div>

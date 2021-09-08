@@ -1,3 +1,10 @@
 <h1 class="title is-1">
     <%= @challenge.title %>
 </h1>
+
+<% unless @challenge.rules.empty? %>
+<h2 class="is-size-3">Rules</h2>
+<pre>
+<%= @challenge.rules %>
+</pre>
+<% end %>
