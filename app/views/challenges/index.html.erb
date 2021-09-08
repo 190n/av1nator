@@ -3,7 +3,12 @@
     <p>
         There are no challenges yet.
     </p>
+    <p>
+        <%= link_to 'New challenge', new_challenge_path, class: 'button is-primary' %>
+    </p>
 <% else %>
+    <p>
+    </p>
     <div class="content">
         <ul>
             <% @challenges.each do |c| %>

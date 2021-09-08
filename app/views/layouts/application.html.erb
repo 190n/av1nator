@@ -50,7 +50,7 @@
         </nav>
         <main class="column is-8 is-offset-2 is-desktop">
             <% flash.each do |type, msg| %>
-                <div class="notification is-light is-<%= { 'error' => 'danger', 'notice' => 'info' }[type] %>">
+                <div class="notification is-light is-<%= { 'error' => 'danger', 'notice' => 'info', 'alert' => 'info' }[type] %>">
                     <button class="delete"></button>
                     <%= msg %>
                 </div>
