@@ -28,13 +28,9 @@
                 </div>
                 <div class="navbar-end">
                     <% if user_signed_in? %>
-                        <%= link_to user_path(current_user), class: 'navbar-item' do %>
-                            <figure class="image">
-                                <img src="<%= current_user.image %>?size=64" class="is-rounded">
-                            </figure>
-                            &nbsp;
-                            <%= current_user.name %>
-                        <% end %>
+                        <div class="navbar-item">
+                            <%= render partial: 'shared/user_link', object: current_user %>
+                        </div>
                     <% end %>
                     <div class="navbar-item">
                         <div class="buttons">

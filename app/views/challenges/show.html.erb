@@ -4,6 +4,19 @@
 <h2 class="subtitle">
     Created by
     <%= render partial: 'shared/user_link', object: @challenge.user %>
+    &bull;
+    Size limit: <%= @challenge.max_size %> bytes
+    &bull;
+    <% now = DateTime.now %>
+    <% if now < @challenge.start %>
+        Not yet open
+    <% elsif now < @challenge.deadline %>
+        Accepting submissions
+    <% elsif now < @challenge.voting_deadline %>
+        Voting in progress
+    <% else %>
+        Closed
+    <% end %>
 </h2>
 
 <% unless @challenge.rules.empty? %>
