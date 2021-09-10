@@ -7,8 +7,9 @@ Rails.application.routes.draw do
     end
 
     resources :users, only: :show
-    resources :challenges
-    resources :submissions
+    resources :challenges do
+        resources :submissions
+    end
 
     root 'pages#home'
 end
