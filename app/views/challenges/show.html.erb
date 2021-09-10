@@ -7,18 +7,20 @@
     &bull;
     Size limit: <%= @challenge.max_size %> bytes
     &bull;
-    <% now = DateTime.now %>
-    <% if now < @challenge.start %>
-        Not yet open
-    <% elsif now < @challenge.deadline %>
-        Accepting submissions
-    <% elsif now < @challenge.voting_deadline %>
-        Voting in progress
-    <% else %>
-        Closed
-    <% end %>
+    <%= @challenge.status %>
 </h2>
-
+<div class="columns">
+    <div class="column is-narrow">
+        Submissions open:<br>
+        Submission deadline:<br>
+        Voting deadline:
+    </div>
+    <div class="column">
+        <%= @challenge.start %><br>
+        <%= @challenge.deadline %><br>
+        <%= @challenge.voting_deadline %>
+    </div>
+</div>
 <% unless @challenge.rules.empty? %>
     <h2 class="is-size-3">Rules</h2>
     <pre><%= @challenge.rules %></pre>

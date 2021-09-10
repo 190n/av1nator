@@ -25,4 +25,17 @@ class Challenge < ApplicationRecord
     def active?
         start < DateTime.now and DateTime.now < voting_deadline
     end
+
+    def status
+        now = DateTime.now
+        if now < start
+            'Not yet open'
+        elsif now < deadline
+            'Accepting submissions'
+        elsif now < voting_deadline
+            'Voting in progress'
+        else
+            'Closed'
+        end
+    end
 end
