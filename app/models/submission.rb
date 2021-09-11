@@ -4,4 +4,6 @@ class Submission < ApplicationRecord
 
     validates :title, presence: true
     validates :user, presence: true
+
+    has_one_attached :file
 end

@@ -1,0 +1,13 @@
+<h1 class="title is-1">New submission</h1>
+
+<%= form_with model: @submission do |f| %>
+    <%= render partial: 'shared/fields', locals: {
+        form: f,
+        fields: [
+            { field: :title, required: true },
+            { field: :file, required: true, field_type: :file_field },
+        ],
+    } %>
+    <%= render partial: 'shared/required_legend' %>
+    <%= f.submit class: 'button is-primary' %>
+<% end %>

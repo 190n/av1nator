@@ -1,3 +1,11 @@
 <h1 class="title is-1">
     Submissions
 </h1>
+<% if @submissions.empty? %>
+    <p>
+        There are no submissions yet.
+    </p>
+<% else %>
+<% end %>
+
+<%= link_to 'New submission', new_challenge_submission_path(@challenge), class: 'button is-primary' %>
